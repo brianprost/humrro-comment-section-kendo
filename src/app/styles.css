@@ -1,0 +1,48 @@
+.contact-form {
+  width: 400px;
+  margin: auto;
+  padding: 4px 10px;
+}
+
+.contact-form .k-panel {
+  display: flex;
+  line-height: 20px;
+  border: none;
+}
+
+.contact-form .k-avatar {
+  margin-right: 16px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3), 0 4px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.client-section {
+  display: flex;
+  font-size: 14px;
+  width: 18em;
+}
+
+.client-name-message {
+  display: flex;
+  flex-direction: column;
+}
+
+.k-textarea .send-button {
+  color: #ff6358;
+  width: 44px;
+}
+
+.k-textarea .send-button:hover {
+  color: #eb5b51;
+}
+
+.button-opacity {
+  opacity: .5;
+}
+
+.custom-suffix {
+  display: flex;
+  align-items: center;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-color: inherit;
+}
