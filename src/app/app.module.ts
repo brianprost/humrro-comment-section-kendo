@@ -11,22 +11,24 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { AppComponent } from './app.component';
+import { NotificationModule } from '@progress/kendo-angular-notification';
 
 @NgModule({
-    bootstrap: [AppComponent],
-    declarations: [AppComponent],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        InputsModule,
-        LabelModule,
-        ButtonsModule,
-        IconsModule,
-        LayoutModule,
-        DropDownsModule
-    ]
+  bootstrap: [AppComponent],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputsModule,
+    LabelModule,
+    ButtonsModule,
+    IconsModule,
+    LayoutModule,
+    DropDownsModule,
+    NotificationModule,
+  ],
 })
 export class AppModule {}

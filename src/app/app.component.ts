@@ -1,5 +1,6 @@
 import { Component, Renderer2, ViewChild } from '@angular/core';
 import { TextAreaComponent } from '@progress/kendo-angular-inputs';
+import { NotificationService } from '@progress/kendo-angular-notification';
 
 @Component({
   selector: 'my-app',
@@ -22,7 +23,7 @@ import { TextAreaComponent } from '@progress/kendo-angular-inputs';
                     <kendo-textarea-suffix class="custom-suffix">
                         <button aria-label="Photo" kendoButton fillMode="clear" icon="photo"></button>
                         <button aria-label="Camera" kendoButton fillMode="clear" icon="camera"></button>
-                        <kendo-dropdownlist [data]="itemStates" style="width: 150px;" [(ngModel)]="itemStates[0]">Item state</kendo-dropdownlist>
+                        <kendo-dropdownlist [data]="itemStates" style="width: 150px;" [(ngModel)]="itemStatus">Item state</kendo-dropdownlist>
                         <span class="k-flex-1"></span>
                         <kendo-input-separator class="k-text-base"></kendo-input-separator>
                         <button aria-label="Send" kendoButton fillMode="clear" class="send-button" (click)="sendMessage(textAreaValue)">Send</button>
@@ -35,6 +36,7 @@ import { TextAreaComponent } from '@progress/kendo-angular-inputs';
 export class AppComponent {
   @ViewChild(TextAreaComponent) public textarea: TextAreaComponent;
 
+  public commenterIndex = 0;
   public firstContactImage =
     'https://demos.telerik.com/kendo-ui/content/web/Customers/RICSU.jpg';
   public secondContactImage =
@@ -46,8 +48,7 @@ export class AppComponent {
     {
       name: 'James',
       image: this.secondContactImage,
-      message:
-        'Hi, I just finished my first item. How does it look?',
+      message: 'Hi, I just finished my first item. How does it look?',
     },
   ];
 
@@ -70,7 +71,10 @@ export class AppComponent {
     'Pure shit, revise',
     'This item is a fireable offense.',
   ];
-  constructor(public renderer: Renderer2) {}
+  constructor(
+    public renderer: Renderer2,
+    private notificationService: NotificationService
+  ) {}
 
   public clearValue(): void {
     this.textAreaValue = '';
@@ -85,11 +89,25 @@ export class AppComponent {
   }
 
   sendMessage(msg) {
-    let person = this.people[Math.floor(Math.random() * 2)];
+    // let person = this.people[Math.floor(Math.random() * 2)];
+    let person = this.people[this.commenterIndex];
     this.messages.push({
       name: person.name,
       image: person.image,
       message: msg,
+    });
+    this.commenterIndex++;
+    this.show(this.itemStatus);
+  }
+
+  public show(itemStatus: string): void {
+    this.notificationService.show({
+      content: `Item status set to ${itemStatus}!`,
+      cssClass: 'button-notification',
+      animation: { type: 'slide', duration: 400 },
+      position: { horizontal: 'center', vertical: 'bottom' },
+      type: { style: 'success', icon: true },
+      closable: true,
     });
   }
 }

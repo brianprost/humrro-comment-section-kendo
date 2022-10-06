@@ -30,6 +30,7 @@
     "@progress/kendo-angular-l10n": "latest",
     "@progress/kendo-angular-label": "latest",
     "@progress/kendo-angular-layout": "latest",
+    "@progress/kendo-angular-notification": "^4.0.0",
     "@progress/kendo-angular-popup": "latest",
     "@progress/kendo-angular-progressbar": "latest",
     "@progress/kendo-angular-treeview": "latest",
