@@ -11,26 +11,19 @@ import { TextAreaComponent } from '@progress/kendo-angular-inputs';
                 <div class="client-section">
                     <div class="client-name-message">
                         <span class="k-text-primary k-font-weight-bold">{{msg.name}}</span>
-                        <div class="k-text-base">{{msg.message}}?</div>
+                        <div class="k-text-base">{{msg.message}}</div>
                     </div>
                     <span class="k-font-weight-bold">1h</span>
                 </div>
             </div>
             <div class="k-panel">
-                <kendo-avatar [imageSrc]="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRetsi7nGedl7ewdpq1J1eJ_FPDIAnOQFZfEZDw6Le-YfgiQoA-JMTDQx9jlEh-8e1DKAY&usqp=CAU"></kendo-avatar>
+                <kendo-avatar [imageSrc]=""></kendo-avatar>
                 <kendo-textarea [style.width.px]="700" resizable="auto" [(ngModel)]="textAreaValue">
                     <kendo-textarea-suffix class="custom-suffix">
                         <button aria-label="Photo" kendoButton fillMode="clear" icon="photo"></button>
                         <button aria-label="Camera" kendoButton fillMode="clear" icon="camera"></button>
+                        <kendo-dropdownlist [data]="itemStates" style="width: 150px;" [(ngModel)]="itemStates[0]">Item state</kendo-dropdownlist>
                         <span class="k-flex-1"></span>
-                        <button
-                            aria-label="Clear"
-                            kendoButton
-                            fillMode="clear"
-                            icon="close-circle"
-                            (click)="clearValue()"
-                            class="button-opacity"
-                        ></button>
                         <kendo-input-separator class="k-text-base"></kendo-input-separator>
                         <button aria-label="Send" kendoButton fillMode="clear" class="send-button" (click)="sendMessage(textAreaValue)">Send</button>
                     </kendo-textarea-suffix>
@@ -48,12 +41,13 @@ export class AppComponent {
     'https://demos.telerik.com/kendo-ui/content/web/Customers/GOURL.jpg';
   public textAreaValue =
     'Hi James, thanks for contacting our support team. Please, use our ticket system with the specific problem you have and we will get back to you with a solution.';
+  public itemStatus = 'Open';
   public messages = [
     {
       name: 'James',
       image: this.secondContactImage,
       message:
-        'Hi, I need some assistance with the installer, who should I turn to?',
+        'Hi, I just finished my first item. How does it look?',
     },
   ];
 
@@ -68,6 +62,13 @@ export class AppComponent {
       image:
         'https://cdn.vox-cdn.com/thumbor/pHBJL8ahQkxp_a8oUINOlDQ62Pk=/0x0:1560x780/1200x800/filters:focal(693x266:941x514)/cdn.vox-cdn.com/uploads/chorus_image/image/57846439/harley.0.0.jpg',
     },
+  ];
+
+  public itemStates = [
+    'Open',
+    'Looks good',
+    'Pure shit, revise',
+    'This item is a fireable offense.',
   ];
   constructor(public renderer: Renderer2) {}
 
